@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { Home } from './pages/Home'
 import { AddEditPost } from './pages/AddEditPost'
 import { PostInfo } from './pages/PostInfo'
-import { About } from './pages/About'
+import { About, CCATSays } from './pages/CCATSays'
 import { Header } from './components/Header'
 
 
@@ -17,7 +17,7 @@ function App() {
         <Route exact path='/addPost' element={<AddEditPost />}></Route>
         <Route exact path='/editPost/:id' element={<AddEditPost />}></Route>
         <Route exact path='/postInfo/:id' element={<PostInfo />}></Route>
-        <Route exact path='/about' element={<About />}></Route>
+        <Route exact path='/CCATSays' element={<CCATSays />}></Route>
 
       </Routes>
     </div>

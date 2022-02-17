@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const About = () => {
+export const CCATSays = () => {
   return (
     <div>
-        <h2> About </h2>
+        <h2> CCATSays </h2>
     </div>
   )
 }
