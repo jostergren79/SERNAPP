@@ -7,7 +7,6 @@ import {
     MDBIcon, 
     MDBNavbarNav, 
     MDBNavbarItem, 
-    MDBNavbarLink, 
     MDBCollapse 
 }  from 'mdb-react-ui-kit'
 
@@ -22,7 +21,7 @@ export const Header = () => {
 
             <MDBNavbarBrand className='text-white'>
                 <span style={{ marginRight: '10px' }}>
-                <i class="fab fa-github"></i>
+                <i className="fab fa-github"></i>
                 </span>
                 CCAT 2.0
             </MDBNavbarBrand>
@@ -41,21 +40,21 @@ export const Header = () => {
                 <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
 
                 <MDBNavbarItem>
-                <MDBNavbarLink className='nav-link'>
-                    <NavLink to='/' className='text-white'> Home </NavLink>
-                </MDBNavbarLink>
+                
+                    <NavLink to='/' className='nav-link text-white'> Home </NavLink>
+                
                 </MDBNavbarItem>
 
                 <MDBNavbarItem>
-                <MDBNavbarLink className='nav-link'>
-                    <NavLink to='/AddNew' className='text-white'> Add Post </NavLink>
-                </MDBNavbarLink>
+            
+                    <NavLink to='/addPost' className='nav-link text-white'> Add Post </NavLink>
+              
                 </MDBNavbarItem>
 
                 <MDBNavbarItem>
-                <MDBNavbarLink className='nav-link'>
-                    <NavLink to='/ccatSays' className='text-white'> CCAT Says </NavLink>
-                </MDBNavbarLink>
+             
+                    <NavLink to='/ccatSays' className='nav-link text-white'> CCAT Says </NavLink>
+          
                 </MDBNavbarItem>
 
 

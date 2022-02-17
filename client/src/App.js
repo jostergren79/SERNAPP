@@ -1,9 +1,8 @@
-import './App.css'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { Home } from './pages/Home'
 import { AddEditPost } from './pages/AddEditPost'
 import { PostInfo } from './pages/PostInfo'
-import { About, CCATSays } from './pages/CCATSays'
+import { CCATSays } from './pages/CCATSays'
 import { Header } from './components/Header'
 
 

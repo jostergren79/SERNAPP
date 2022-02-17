@@ -1,10 +1,24 @@
 {
     "posts": [
         {
-        "id": 1,
-        "source":"TestSource",
-        "product": ["Product1","Product2", "Product3"]
+            "id": 1,
+            "source":"TestSource1",
+            "product": ["TestProduct1","TestProduct2", "TestProduct3"]
+        },
+        {
+            "id": 2,
+            "source":"TestSource2",
+            "product": ["TestProduct1","TestProduct2", "TestProduct3"]
+        },
+        {
+            "id": 3,
+            "source":"TestSource3",
+            "product": ["TestProduct1","TestProduct2", "TestProduct3"]
+        },
+        {
+            "id": 4,
+            "source":"TestSource4",
+            "product": ["TestProduct1","TestProduct2", "TestProduct3"]
         }
     ]
-
 }
