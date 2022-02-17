@@ -1,0 +1,10 @@
+{
+    "posts": [
+        {
+        "id": 1,
+        "source":"TestSource",
+        "product": ["Product1","Product2", "Product3"]
+        }
+    ]
+
+}
