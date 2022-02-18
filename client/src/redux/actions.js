@@ -5,9 +5,11 @@ export const loadPostsStart = () => ({
 })
 
 export const loadPostsSuccess = (posts) => ({
-    type: types.LOAD_POSTS_SUCCESS
+    type: types.LOAD_POSTS_SUCCESS,
+    payload: posts
 })
 
 export const loadPostsError = (error) => ({
-    type: types.LOAD_POSTS_ERROR
+    type: types.LOAD_POSTS_ERROR,
+    payload: error
 })

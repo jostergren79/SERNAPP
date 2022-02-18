@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import { Home } from './pages/Home'
+import { Home }   from './pages/Home'
 import { AddEditPost } from './pages/AddEditPost'
 import { PostInfo } from './pages/PostInfo'
 import { CCATSays } from './pages/CCATSays'
