@@ -27,12 +27,20 @@ export function* onLoadPostsStartAsync() {
     } 
 }
 
+export function* onCreatePostsStartAsync(){
+    
+}
+
 
 export function* onLoadPosts() {
     yield takeEvery(types.LOAD_POSTS_START, onLoadPostsStartAsync)
 }
 
-const postSagas = [fork(onLoadPosts)]
+export function* onCreatePost() {
+    yield takeEvery(types.CREATE_POST_START, onCreatePostsStartAsync)
+}
+
+const postSagas = [fork(onLoadPosts), fork(onCreatePost)]
 
 export default function* rootSaga() {
     yield all([...postSagas])
