@@ -1,40 +1,49 @@
-import React, {useState, useEffect} from 'react'
-import { MDBValidation, MDBInput, MDBBtn, MDBCheckbox, MDBInputGroup} from 'mdb-react-ui-kit'
+import React, {useState} from 'react'
+import { MDBValidation, MDBInput, MDBBtn } from 'mdb-react-ui-kit'
 import { useNavigate } from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { createPostStart } from '../redux/Actions'
 
 export const AddEditPost = () => {
+  
   const [formValue, setFormValue] = useState('')
-  const { source, description, product } = formValue
+  const { source, description } = formValue
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
+// ///checkboxes 
+//   const [productOneChecked, setProductOneChecked] = useState(false)
+//   const [productTwoChecked, setProductTwoChecked] = useState(false)
+//   const [productThreeChecked, setProductThreeChecked] = useState(false)
 
-  const [productOneChecked, setProductOneChecked] = useState(false)
-  const [productTwoChecked, setProductTwoChecked] = useState(false)
-  const [productThreeChecked, setProductThreeChecked] = useState(false)
- 
+//  ///handle checkbox states
+//   const handleChangeOne = () => {
+//     setProductOneChecked(!productOneChecked);
+//     console.log('productOne checked ' + !productOneChecked)   
+//   };
 
-  const handleChangeOne = () => {
-    setProductOneChecked(!productOneChecked);
-    console.log('productOne checked ' + !productOneChecked)   
-  };
+//   const handleChangeTwo = () => {
+//     setProductTwoChecked(!productTwoChecked);
+//     console.log('productTwo checked ' + !productTwoChecked)
+//   };
 
-  const handleChangeTwo = () => {
-    setProductTwoChecked(!productTwoChecked);
-    console.log('productTwo checked ' + !productTwoChecked)
-  };
+//   const handleChangeThree = () => {
+//     setProductThreeChecked(!productThreeChecked);
+//     console.log('productThree checked ' + !productThreeChecked)
+//   };
 
-  const handleChangeThree = () => {
-    setProductThreeChecked(!productThreeChecked);
-    console.log('productThree checked ' + !productThreeChecked)
-  };
-
- 
-
-  const handleSubmit = () => {}
+  ///form submit
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(source && description) {
+      dispatch(createPostStart(formValue))
+      setTimeout(() => navigate('/'), 500)
+console.log('you submitted')
+    }
+  }
+  ///handle input 1 and 2 changes 
   const onInput1Change = () => {}
   const onInput2Change = () => {}
-  
 
   return (
     <MDBValidation className='row g-3' style={{marginTop: '100px'}} noValidate onSubmit={handleSubmit}>
@@ -48,14 +57,14 @@ export const AddEditPost = () => {
       }}
       >
         
-        <MDBInput
+      <MDBInput
         value={source}
         name='source'
         type='text'
         onChange={onInput1Change}
         label='Source'
-        validation='Please provide a source'
-        invalid
+        validation=''
+        
       /> 
       <br></br>
 
@@ -65,50 +74,51 @@ export const AddEditPost = () => {
         type='textarea'
         onChange={onInput2Change}
         label='Description'
-        validation='Please enter a description'
+        validation=''
       /> 
       <br></br>
 
-      <MDBInput
-      value='product'
-      name='product'
-      type='checkbox'
+    {/* <MDBInput
+      type='textarea'
       label='Product'
-      style={{marginBottom: '5px', maxWidth: '100%'}}
       >
       
-      <MDBInputGroup>
-      <MDBCheckbox
-      style={{marginLeft: '5px', maxWidth: '100%'}}
+      <MDBCheckbox 
       value={product}
-      name='product1'
-      label='product1'
+      name='product1' 
+      type='checkbox'
       onChange={handleChangeOne}
+      label='product1'
+      id='product'
+      style={{marginLeft: '10px'}}
       />
-      
-    
-      <MDBCheckbox
-      style={{marginLeft: '5px'}}
+     
+     <MDBCheckbox
       value={product}
-      name='product2'
-      label='product2'
+      name='product2' 
+      type='checkbox'
       onChange={handleChangeTwo}
+      label='product2'
+      id='product'
+      style={{marginLeft: '10px'}}
       />
 
-      <MDBCheckbox
-      style={{marginLeft: '5px', marginBottom: '20px'}}
+     <MDBCheckbox
       value={product}
-      name='product3'
-      label='product3'
+      name='product3' 
+      type='checkbox'
       onChange={handleChangeThree}
-      />
-          </MDBInputGroup>
-      </MDBInput>
-  
+      label='product3'
+      id='product'
+      style={{marginLeft: '10px', marginBottom: '20px'}}
+      />  
 
-    
+   </MDBInput> */}
+   
+   
     <div className='col-12'
     style={{marginTop: '10px'}}>
+
       <MDBBtn style={{marginRight: '10px'}} type='submit'>
       Add
       </MDBBtn>               
@@ -119,7 +129,6 @@ export const AddEditPost = () => {
     </div>
 
 
- 
     </div>
     </MDBValidation>
   )

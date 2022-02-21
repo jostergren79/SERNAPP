@@ -16,12 +16,14 @@ export const Header = () => {
     const [showBasic,setShowBasic] = useState(false)
   return (
     <>
-    <MDBNavbar expand='lg' light bgColor='dark'>
+    <MDBNavbar expand='lg' light bgColor='white'>
         <MDBContainer fluid>
 
-            <MDBNavbarBrand className='text-white'>
+            <MDBNavbarBrand className='text-black'>
                 <span style={{ marginRight: '10px' }}>
-                <i className="fab fa-github"></i>
+          
+
+                <i className="fas fa-cat"></i>
                 </span>
                 CCAT 2.0
             </MDBNavbarBrand>
@@ -30,7 +32,7 @@ export const Header = () => {
                 aria-controls='navbar'
                 aria-expanded='false'
                 aria-label='Toggle navigation'
-                className='text-white'
+                className='text-black'
                 onClick={() => setShowBasic(!showBasic)}
             >
                 <MDBIcon fas icon="bars" />
@@ -40,31 +42,19 @@ export const Header = () => {
                 <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
 
                 <MDBNavbarItem>
-                
-                    <NavLink to='/' className='nav-link text-white'> Home </NavLink>
-                
+                <NavLink to='/' className='nav-link text-black'> Home </NavLink>
                 </MDBNavbarItem>
 
                 <MDBNavbarItem>
-            
-                    <NavLink to='/addPost' className='nav-link text-white'> Add Post </NavLink>
-              
+                <NavLink to='/addPost' className='nav-link text-black'> Add Post </NavLink>
                 </MDBNavbarItem>
 
                 <MDBNavbarItem>
-             
-                    <NavLink to='/ccatSays' className='nav-link text-white'> CCAT Says </NavLink>
-          
+                <NavLink to='/ccatSays' className='nav-link text-black'> CCAT Says </NavLink>
                 </MDBNavbarItem>
-
-
-                       
-
-                  
                     
                 </MDBNavbarNav>
             </MDBCollapse>
-
         </MDBContainer>
     </MDBNavbar>
     </>

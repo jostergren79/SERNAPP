@@ -47,21 +47,21 @@ export const Home = () => {
                 <td>{[item.product]}</td>
                 <td>
 
-                  <MDBBtn className='m-1' tag='a' color='none' onClick={() => handleDelete(item.id)}>
                   <MDBTooltip title='Delete' tag='a'>
-                    <MDBIcon fas icon='trash' style={{color: '#dd4b39'}} size='lg'></MDBIcon>
-                  </MDBTooltip>
-                  </MDBBtn> {" "}
+                  <MDBBtn className='m-1' color='none' tag='a' onClick={() => handleDelete(item.id)}>
+                  <MDBIcon fas icon='trash' style={{color: 'black'}} size='lg'></MDBIcon>
+                  </MDBBtn>
+                  </MDBTooltip> {" "}
 
                   <MDBTooltip title='Edit' tag='a'>
-                  <Link to={`/editPost/${item.id}`}>
-                  <MDBIcon fas icon='pen' style={{color: '#55acee', marginBottom: '10px'}} size='lg'></MDBIcon>
+                  <Link id='RouterNavLink' to={`/editPost/${item.id}`} >
+                  <MDBIcon fas icon='pen' style={{color: 'black', marginBottom: '10px'}} size='lg'></MDBIcon>
                   </Link>
                   </MDBTooltip> {" "}
 
                   <MDBTooltip title='View' tag='a'>
-                  <Link to={`/postInfo/${item.id}`}>
-                  <MDBIcon fas icon='eye' style={{color: '#3b5998', marginBottom: '10px'}} size='lg'></MDBIcon>
+                  <Link id='RouterNavLink' to={`/postInfo/${item.id}`}>
+                  <MDBIcon fas icon='eye' style={{color: 'black', marginBottom: '10px'}} size='lg'></MDBIcon>
                   </Link>
                   </MDBTooltip>
 

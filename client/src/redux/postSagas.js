@@ -11,8 +11,8 @@ import  {
     call,
 } from 'redux-saga/effects'
 
-import { loadPostsSuccess, loadPostsError } from './Actions'
-import { loadPostsAPI } from './api'
+import { loadPostsSuccess, loadPostsError, createPostSuccess, createPostError } from './Actions'
+import { loadPostsAPI, createPostAPI } from './api'
 
 export function* onLoadPostsStartAsync() {
     try {
@@ -27,17 +27,23 @@ export function* onLoadPostsStartAsync() {
     } 
 }
 
-export function* onCreatePostsStartAsync(){
-    
+export function* onCreatePostStartAsync(payload) {
+    try {
+        const response = yield call(createPostAPI, payload) 
+        if(response.status === 200) {
+        yield put(createPostSuccess(response.data))
+        }
+    } catch (error) {
+        yield put(createPostError(error.response.data))
+    } 
 }
-
 
 export function* onLoadPosts() {
     yield takeEvery(types.LOAD_POSTS_START, onLoadPostsStartAsync)
 }
 
 export function* onCreatePost() {
-    yield takeEvery(types.CREATE_POST_START, onCreatePostsStartAsync)
+    yield takeLatest(types.CREATE_POST_START, onCreatePostStartAsync)
 }
 
 const postSagas = [fork(onLoadPosts), fork(onCreatePost)]
