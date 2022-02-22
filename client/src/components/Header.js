@@ -19,7 +19,7 @@ export const Header = () => {
     <MDBNavbar expand='lg' light bgColor='white'>
         <MDBContainer fluid>
 
-            <MDBNavbarBrand className='text-black'>
+            <MDBNavbarBrand className='' style={{color: '#01579B'}}>
                 <span style={{ marginRight: '10px' }}>
           
 
@@ -32,7 +32,8 @@ export const Header = () => {
                 aria-controls='navbar'
                 aria-expanded='false'
                 aria-label='Toggle navigation'
-                className='text-black'
+                className=''
+                style={{color: '#01579B'}}
                 onClick={() => setShowBasic(!showBasic)}
             >
                 <MDBIcon fas icon="bars" />
@@ -42,15 +43,15 @@ export const Header = () => {
                 <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
 
                 <MDBNavbarItem>
-                <NavLink to='/' className='nav-link text-black'> Home </NavLink>
+                <NavLink to='/' className='nav-link' style={{color: '#01579B'}}> Home </NavLink>
                 </MDBNavbarItem>
 
                 <MDBNavbarItem>
-                <NavLink to='/addPost' className='nav-link text-black'> Add Post </NavLink>
+                <NavLink to='/addPost' className='nav-link' style={{color: '#01579B'}} > Add Post </NavLink>
                 </MDBNavbarItem>
 
                 <MDBNavbarItem>
-                <NavLink to='/ccatSays' className='nav-link text-black'> CCAT Says </NavLink>
+                <NavLink to='/ccatSays' className='nav-link' style={{color: '#01579B'}} > CCAT Says </NavLink>
                 </MDBNavbarItem>
                     
                 </MDBNavbarNav>

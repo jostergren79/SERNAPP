@@ -27,3 +27,18 @@ export const createPostError = (error) => ({
     type: types.CREATE_POST_ERROR,
     payload: error
 })
+
+export const deletePostStart = (postId) => ({
+    type: types.DELETE_POST_START,
+    payload: postId
+})
+
+export const deletePostSuccess = (postId) => ({
+    type: types.DELETE_POST_SUCCESS,
+    payload: postId,
+})
+
+export const deletePostError = (error) => ({
+    type: types.DELETE_POST_ERROR,
+    payload: error
+})

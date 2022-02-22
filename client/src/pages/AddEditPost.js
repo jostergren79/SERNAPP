@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import { MDBValidation, MDBInput, MDBBtn } from 'mdb-react-ui-kit'
+import { MDBInput, MDBBtn } from 'mdb-react-ui-kit'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { createPostStart } from '../redux/Actions'
 
 export const AddEditPost = () => {
@@ -11,26 +11,6 @@ export const AddEditPost = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-// ///checkboxes 
-//   const [productOneChecked, setProductOneChecked] = useState(false)
-//   const [productTwoChecked, setProductTwoChecked] = useState(false)
-//   const [productThreeChecked, setProductThreeChecked] = useState(false)
-
-//  ///handle checkbox states
-//   const handleChangeOne = () => {
-//     setProductOneChecked(!productOneChecked);
-//     console.log('productOne checked ' + !productOneChecked)   
-//   };
-
-//   const handleChangeTwo = () => {
-//     setProductTwoChecked(!productTwoChecked);
-//     console.log('productTwo checked ' + !productTwoChecked)
-//   };
-
-//   const handleChangeThree = () => {
-//     setProductThreeChecked(!productThreeChecked);
-//     console.log('productThree checked ' + !productThreeChecked)
-//   };
 
   ///form submit
   const handleSubmit = (e) => {
@@ -38,17 +18,29 @@ export const AddEditPost = () => {
     if(source && description) {
       dispatch(createPostStart(formValue))
       setTimeout(() => navigate('/'), 500)
-console.log('you submitted')
+      console.log('form submitted')
     }
   }
   ///handle input 1 and 2 changes 
-  const onInput1Change = () => {}
-  const onInput2Change = () => {}
+  const onInputChange = (e) => {
+    let {name, value} = e.target
+    setFormValue({...formValue, [name]: value })
+  }
+
 
   return (
-    <MDBValidation className='row g-3' style={{marginTop: '100px'}} noValidate onSubmit={handleSubmit}>
-      <p className='fs-2 fw-bold'>Add Post Details</p>
-      <div
+   <>
+      <p 
+      className='fs-2 fw-bold'
+      style={{
+        marginTop: '20px',
+        color: '#01579B'}}
+      >
+      Add Post Details
+      </p>
+
+      <form
+      onSubmit={handleSubmit}
       style={{
         margin: 'auto',
         padding: '15px',
@@ -61,7 +53,7 @@ console.log('you submitted')
         value={source}
         name='source'
         type='text'
-        onChange={onInput1Change}
+        onChange={onInputChange}
         label='Source'
         validation=''
         
@@ -72,64 +64,29 @@ console.log('you submitted')
         value={description}
         name='description'
         type='textarea'
-        onChange={onInput2Change}
+        onChange={onInputChange}
         label='Description'
         validation=''
       /> 
       <br></br>
 
-    {/* <MDBInput
-      type='textarea'
-      label='Product'
-      >
       
-      <MDBCheckbox 
-      value={product}
-      name='product1' 
-      type='checkbox'
-      onChange={handleChangeOne}
-      label='product1'
-      id='product'
-      style={{marginLeft: '10px'}}
-      />
-     
-     <MDBCheckbox
-      value={product}
-      name='product2' 
-      type='checkbox'
-      onChange={handleChangeTwo}
-      label='product2'
-      id='product'
-      style={{marginLeft: '10px'}}
-      />
+    <div 
+      className='col-12'
+      style={{marginTop: '10px'}}
+      >
 
-     <MDBCheckbox
-      value={product}
-      name='product3' 
-      type='checkbox'
-      onChange={handleChangeThree}
-      label='product3'
-      id='product'
-      style={{marginLeft: '10px', marginBottom: '20px'}}
-      />  
-
-   </MDBInput> */}
-   
-   
-    <div className='col-12'
-    style={{marginTop: '10px'}}>
-
-      <MDBBtn style={{marginRight: '10px'}} type='submit'>
+      <MDBBtn style={{marginRight: '10px', backgroundColor: '#01579B'}} type='submit'>
       Add
       </MDBBtn>               
 
-      <MDBBtn onClick={() => navigate('/')} color='danger'>
+      <MDBBtn onClick={() => navigate('/')} style={{backgroundColor: '#E57373'}}>
       Cancel
       </MDBBtn>
     </div>
 
 
-    </div>
-    </MDBValidation>
+    </form>
+    </>
   )
 }

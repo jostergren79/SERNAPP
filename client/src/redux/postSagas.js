@@ -11,10 +11,10 @@ import  {
     call,
 } from 'redux-saga/effects'
 
-import { loadPostsSuccess, loadPostsError, createPostSuccess, createPostError } from './Actions'
-import { loadPostsAPI, createPostAPI } from './api'
+import { loadPostsSuccess, loadPostsError, createPostSuccess, createPostError, deletePostSuccess, deletePostError } from './Actions'
+import { loadPostsAPI, createPostAPI, deletePostAPI } from './api'
 
-export function* onLoadPostsStartAsync() {
+function* onLoadPostsStartAsync() {
     try {
         const response = yield call(loadPostsAPI)
         if(response.status === 200) {
@@ -27,7 +27,7 @@ export function* onLoadPostsStartAsync() {
     } 
 }
 
-export function* onCreatePostStartAsync(payload) {
+function* onCreatePostStartAsync({payload}) {
     try {
         const response = yield call(createPostAPI, payload) 
         if(response.status === 200) {
@@ -38,15 +38,34 @@ export function* onCreatePostStartAsync(payload) {
     } 
 }
 
-export function* onLoadPosts() {
+function* onDeletePostStartAsync({postId}) {
+    try {
+        const response = yield call(deletePostAPI, postId) 
+        if(response.status === 200) {
+        yield delay(500)
+        yield put(deletePostSuccess(postId))
+        }
+    } catch (error) {
+        yield put(deletePostError(error.response.data))
+    } 
+}
+
+function* onLoadPosts() {
     yield takeEvery(types.LOAD_POSTS_START, onLoadPostsStartAsync)
 }
 
-export function* onCreatePost() {
+function* onCreatePost() {
     yield takeLatest(types.CREATE_POST_START, onCreatePostStartAsync)
 }
 
-const postSagas = [fork(onLoadPosts), fork(onCreatePost)]
+function* onDeletePost() {
+    while(true) {
+        const {payload: postId} = yield take(types.DELETE_POST_START)
+        yield call(onDeletePostStartAsync, postId)
+    }
+}
+
+const postSagas = [fork(onLoadPosts), fork(onCreatePost), fork(onDeletePost)]
 
 export default function* rootSaga() {
     yield all([...postSagas])
