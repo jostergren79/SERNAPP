@@ -35,7 +35,7 @@ export const deletePostStart = (postId) => ({
 
 export const deletePostSuccess = (postId) => ({
     type: types.DELETE_POST_SUCCESS,
-    payload: postId,
+    payload: postId
 })
 
 export const deletePostError = (error) => ({
